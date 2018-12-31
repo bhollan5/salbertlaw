@@ -6,8 +6,8 @@
     <div id="menu-options">
     
     </div>
-    <div id="image-banner">
-    
+    <div id="banner-image-container">
+      <img id="banner-image" src="@/assets/banner_images/columns.jpg">
     </div>
   </div>
 </template>
@@ -62,9 +62,14 @@ export default {
   padding: 25px;
   box-shadow: $box-shading;
 }
-#image-banner {
+#banner-image-container {
   background: $dark-gray;
   grid-area: banner-image;
   box-shadow: $heavy-inset-box-shading;
+  overflow-y: hidden;
+}
+#banner-image {
+  margin: 0% 10%;
+  width: 80%;
 }
 </style>
