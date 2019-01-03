@@ -6,7 +6,24 @@
     </div>
 
     <div id="menu-options">
-    
+      <router-link tag="a" class="menu-opt" to="/">
+        Firm Overview
+      </router-link>
+      <router-link tag="a" class="menu-opt" to="/">
+        Attorneys
+      </router-link>
+      <router-link tag="a" class="menu-opt" to="/">
+        Areas of Expertise
+      </router-link>
+      <router-link tag="a" class="menu-opt" to="/">
+        Our Work
+      </router-link>
+      <router-link tag="a" class="menu-opt" to="/">
+        Updated Legal Issues
+      </router-link>
+      <router-link tag="a" class="menu-opt" to="/">
+        Contact Us
+      </router-link>
     </div>
 
     <div id="image-banner">
@@ -60,7 +77,7 @@ export default {
 @import "~@/GlobalVars.scss";
 
 $margin-size: 20%;
-$content-size: 60%;
+$content-size: calc(100% - (2 * #{$margin-size}));
 $mobile-margin-size: 5%;
 $mobile-content-size: 90%;
 
@@ -92,10 +109,18 @@ $mobile-content-size: 90%;
   box-shadow: $inset-box-shading;
   grid-row: 2 / 3;
   grid-column: 1 / 4;
-  width: 90%;
-  padding: 0% 10%;
+  width: $content-size;
+  padding: 0px calc(#{$margin-size} + 5% + 400px);
   height: 30px;
   margin-left: -5%;
+  color: black;
+
+  a {
+    font-size: 12px;
+    color: $dark-gray;
+    text-decoration: none;
+    font-weight: bold;
+  }
 }
 
 #logo {
