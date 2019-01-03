@@ -6,8 +6,25 @@
     padding: 20px;
 }
 
+.red-subtitle {
+    font-size: 12px;
+    padding: 0px 20px;
+    a {
+        color: $red;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
 .flex-content {
     display: flex;
+    @media screen and (max-width: $md-bp) { 
+        flex-direction: column;
+        align-items: center;
+    }
     img {
         align-self: flex-start;
     }
@@ -44,6 +61,11 @@
     margin: -50px 30px 0px 30px;
     position: relative;
     z-index: 11;
+    @media screen and (max-width: $md-bp) { 
+        margin-top: 20px;
+        
+
+    }
 }
 
 .drop-shadow {

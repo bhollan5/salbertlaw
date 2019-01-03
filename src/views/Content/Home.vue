@@ -5,6 +5,9 @@
     <div class="red-quote">
       The Albert Law Firm provides the highest standards of legal services with the most modern technology to achieve outstanding results for our clients. We solve legal problems with our expertise in negotiation, trial and appellate practice and arbitration.
     </div>
+    <div class="red-subtitle">
+      We invite you to learn more about our areas of expertise at the links below, view <a href="#">MR. ALBERT’S PROFESSIONAL BIOGRAPHY</a>, or <a href="#">CONTACT US</a> today.
+    </div>
   </div>
 
   <div class="right-side-content">
@@ -22,9 +25,10 @@
       </div>
       <img src="@/assets/maps/appellate-marker.gif">
       <div>
-        <p class="b">140 JURIED TRIALS TO CONCLUSION</p>
-        <p>» 125 trials in Ohio</p>
-        <p>» 15 others across the U.S.</p>
+        <p class="b">20 APPELLATE COURT APPEARANCES</p>
+        <p>» 18 appearances in Ohio</p>
+        <p>» 1 in Texas</p>
+        <p>» 1 in Georgia</p>
       </div>
     </div>
   </div>

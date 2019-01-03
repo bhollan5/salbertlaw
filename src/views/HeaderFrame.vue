@@ -20,6 +20,24 @@
       <router-view></router-view>
     </div>
 
+    <div id="expertise-footer">
+      <div class="area-of-expertise">
+        <h3>Business Litigation</h3>
+        <h4>SOLVING BUSINESS DISPUTES</h4>
+        <p>For 40 years, Mr. Albert has successfully represented public companies and privately held corporations in a variety of business disputes.</p>
+      </div>
+      <div class="area-of-expertise">
+        <h3>Employment Litigation</h3>
+        <h4>EMPLOYEE AND EMPLOYER REPRESENTATION</h4>
+        <p>Mr. Albert has extensive experience in creating policies and representing employers and employees.</p>
+      </div>
+      <div class="area-of-expertise">
+        <h3>Product Liability Litigation</h3>
+        <h4>REPRESENTING COMPANIES AND INDIVIDUALS</h4>
+        <p>Mr. Albert has successfully represented private and public corporations as well as individuals in product liability litigation.</p>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -36,11 +54,16 @@ export default {
 <style scoped lang="scss">
 @import "~@/GlobalVars.scss";
 
+$margin-size: 20%;
+$content-size: 60%;
+$mobile-margin-size: 5%;
+$mobile-content-size: 90%;
+
 #header-frame {
   position: absolute;
   display: grid;
-  grid-template-rows: 100px 30px 300px 1fr 300px 100px;
-  grid-template-columns: 20% 60% 20%;
+  grid-template-rows: 80px 30px 300px 1fr 200px 70px;
+  grid-template-columns: $margin-size $content-size $margin-size;
   grid-template-areas: 
     "margin-top   margin-top    margin-top"
     "menu-options menu-options  menu-options"
@@ -102,12 +125,12 @@ export default {
 }
 #banner-image-container {
   height: 100%;
-  width: 60%;
-  margin-left: 20%;
+  width: $content-size;
+  margin-left: $margin-size;
   overflow: hidden;
   @media screen and (max-width: $md-bp) {
-    width: 90%;
-    margin-left: 5%;
+    width: $mobile-content-size;
+    margin-left: $mobile-margin-size;
   }
 }
 #banner-image {
@@ -118,5 +141,36 @@ export default {
   grid-area: content;
   padding: 10px;
   display: flex;
+  padding-bottom: 100px;
+}
+
+#expertise-footer {
+  background: $light-gray;
+  grid-area: expertise;
+  text-align: left;
+  padding: 0px $margin-size;
+  width: $content-size;
+  display: flex;
+  justify-content: space-between;
+  @media screen and (max-width: $md-bp) {
+    width: $mobile-content-size;
+    margin-left: $mobile-margin-size;
+  }
+}
+.area-of-expertise {
+  border-top: 8px solid $red;
+  padding: 20px;
+  width: calc(30% - 40px);
+  h3 {
+    color: $red;
+    margin: 0px;
+  }
+  h4 {
+    margin-top: 0px;
+    font-size: 12px;
+  }
+  p {
+    font-size: 12px;
+  }
 }
 </style>
