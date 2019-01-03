@@ -116,5 +116,7 @@ export default {
 
 #content {
   grid-area: content;
+  padding: 10px;
+  display: flex;
 }
 </style>
