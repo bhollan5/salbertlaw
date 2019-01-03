@@ -38,6 +38,11 @@
       </div>
     </div>
 
+    <div id="footer">
+      <p>© 2013 The Albert Law Firm. All rights reserved.	</p>
+      <p>29425 Chagrin Blvd &nbsp; Suite 216 &nbsp; Pepper Pike, OH 44122 &nbsp; T: 216-360-0800 &nbsp; salbert@salbertlaw.com</p>
+    </div>
+
   </div>
 </template>
 
@@ -60,9 +65,10 @@ $mobile-margin-size: 5%;
 $mobile-content-size: 90%;
 
 #header-frame {
+  text-align: left;
   position: absolute;
   display: grid;
-  grid-template-rows: 80px 30px 300px 1fr 200px 70px;
+  grid-template-rows: 80px 30px 300px 1fr 200px 50px;
   grid-template-columns: $margin-size $content-size $margin-size;
   grid-template-areas: 
     "margin-top   margin-top    margin-top"
@@ -76,6 +82,8 @@ $mobile-content-size: 90%;
   width: 100%;
   min-height: 100%;
   @media screen and (max-width: $md-bp) {
+    grid-template-rows: 80px 30px 300px 1fr 500px 100px;
+
     grid-template-columns: 5% 90% 5%;
   }
 }
@@ -147,20 +155,24 @@ $mobile-content-size: 90%;
 #expertise-footer {
   background: $light-gray;
   grid-area: expertise;
-  text-align: left;
   padding: 0px $margin-size;
   width: $content-size;
   display: flex;
   justify-content: space-between;
   @media screen and (max-width: $md-bp) {
     width: $mobile-content-size;
-    margin-left: $mobile-margin-size;
+    padding-left: $mobile-margin-size;
+    flex-direction: column;
   }
 }
 .area-of-expertise {
   border-top: 8px solid $red;
   padding: 20px;
   width: calc(30% - 40px);
+  @media screen and (max-width: $md-bp) {
+    width: auto;
+  }
+
   h3 {
     color: $red;
     margin: 0px;
@@ -171,6 +183,24 @@ $mobile-content-size: 90%;
   }
   p {
     font-size: 12px;
+  }
+}
+
+#footer {
+  grid-area: footer;
+  background: $dark-gray;
+  padding: 0px $margin-size;
+  width: $content-size;
+  color: $gray;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  justify-content: space-between;
+  @media screen and (max-width: $md-bp) { 
+    flex-direction: column;
+    align-items: flex-start;
+    width: $mobile-content-size;
+    padding: 0px $mobile-margin-size;
   }
 }
 </style>
