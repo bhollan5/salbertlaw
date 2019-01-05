@@ -4,25 +4,59 @@
     <div id="logo">
       <img src="@/assets/albert_logo.svg">
     </div>
+    <div id="call-us">
+      <p style="opacity:.5;">Call Us:</p>
+      <p style="font-weight: bold;opacity:.8;">216-360-0800</p>
+    </div>
 
-    <div id="menu-options">
-      <router-link tag="a" class="menu-opt" to="/">
+    <div id="menu-options-container">
+    </div>
+
+    <div id="menu-options" class="desktop-menu-options">
+      <router-link tag="div" class="menu-opt" to="/">
         Firm Overview
       </router-link>
-      <router-link tag="a" class="menu-opt" to="/">
-        Attorneys
+      <router-link tag="div" class="menu-opt" to="/">
+        Attorneys ▾
+        <div class="dropdown-menu">
+          <router-link tag="div" class="menu-opt" to="/">
+            Steven Albert 
+          </router-link>
+          <router-link tag="div" class="menu-opt" to="/">
+            Nicholas Holland 
+          </router-link>
+          <router-link tag="div" class="menu-opt" to="/">
+            Andrew ?
+          </router-link>
+        </div>
       </router-link>
-      <router-link tag="a" class="menu-opt" to="/">
-        Areas of Expertise
-      </router-link>
-      <router-link tag="a" class="menu-opt" to="/">
+      <div class="menu-opt">
+        Areas of Expertise ▾
+        <div class="dropdown-menu">
+          <router-link tag="div" class="menu-opt" to="/">
+            Business Litigation
+          </router-link>
+          <router-link tag="div" class="menu-opt" to="/">
+            Employment Litigation
+          </router-link>
+          <router-link tag="div" class="menu-opt" to="/">
+            Product Liability Litigation
+          </router-link>
+        </div>
+      </div>
+      <div class="menu-opt">
         Our Work
-      </router-link>
-      <router-link tag="a" class="menu-opt" to="/">
+      </div>
+      <router-link tag="div" class="menu-opt" to="/">
         Updated Legal Issues
       </router-link>
-      <router-link tag="a" class="menu-opt" to="/">
+      <router-link tag="div" class="menu-opt" to="/">
         Contact Us
+      </router-link>
+    </div>
+    <div id="menu-options" class="non-desktop-menu-options">
+      <router-link tag="div" class="menu-opt" to="/">
+        Menu <img src="@/assets/hamburger_icon.png" width="10px" style="margin-left: 10px;">
       </router-link>
     </div>
 
@@ -56,7 +90,7 @@
     </div>
 
     <div id="footer">
-      <p>© 2013 The Albert Law Firm. All rights reserved.	</p>
+      <p>© 2019 The Albert Law Firm. All rights reserved.	</p>
       <p>29425 Chagrin Blvd &nbsp; Suite 216 &nbsp; Pepper Pike, OH 44122 &nbsp; T: 216-360-0800 &nbsp; salbert@salbertlaw.com</p>
     </div>
 
@@ -79,7 +113,7 @@ export default {
 $margin-size: 20%;
 $content-size: calc(100% - (2 * #{$margin-size}));
 $mobile-margin-size: 5%;
-$mobile-content-size: 90%;
+$mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
 
 #header-frame {
   text-align: left;
@@ -97,6 +131,7 @@ $mobile-content-size: 90%;
   left: 0;
   top: 0;
   width: 100%;
+  overflow-x: hidden;
   min-height: 100%;
   @media screen and (max-width: $md-bp) {
     grid-template-rows: 80px 30px 300px 1fr 500px 100px;
@@ -104,40 +139,107 @@ $mobile-content-size: 90%;
     grid-template-columns: 5% 90% 5%;
   }
 }
-#menu-options {
+#menu-options-container {
   background: $light-gray;
   box-shadow: $inset-box-shading;
   grid-row: 2 / 3;
   grid-column: 1 / 4;
-  width: $content-size;
-  padding: 0px calc(#{$margin-size} + 5% + 400px);
-  height: 30px;
+  width: 120%;
+  height: 100%;
   margin-left: -5%;
   color: black;
-
-  a {
-    font-size: 12px;
+}
+#menu-options {
+  grid-row: 2/3;
+  grid-column: 2/3;
+  padding-left: 350px;
+  height: 30px;
+  width: calc(100% - 400px);
+  display: flex;
+  align-items: center;
+  div {
+    font-size: 10px;
     color: $dark-gray;
+    cursor: pointer;
     text-decoration: none;
     font-weight: bold;
+    height: 100%;
+    display: flex; // Needed to make the entire section clickable, not just the literal text
+    align-items: center;
+    position: relative;
+
+    .dropdown-menu {
+      display: block;
+      position: absolute;
+      z-index: 100;
+      top: 100%;
+      width: 150px;
+      display: none;
+      div {
+        background: $light-gray;
+        padding: 0px 10px;
+        margin: 0px;
+        border: solid 1px $gray;
+        opacity: .9;
+      }
+      div:hover {
+        background: $gray;
+      }
+    }
+  }
+  div:hover {
+    color: $red;
+    .dropdown-menu {
+      display: block;
+    }
+  }
+}
+
+.desktop-menu-options {
+  justify-content: space-around;
+  @media screen and (max-width: $lg-bp) {
+    display: none !important;
+
+  }
+}
+.non-desktop-menu-options {
+  justify-content: flex-end;
+  
+  @media screen and (min-width: $lg-bp) {
+    display: none !important;
   }
 }
 
 #logo {
+  opacity: 1;
   grid-column: 2/3;
   grid-row: 1/4;
-  width: 300px;
-  height: 140px;
-  margin-left: 50px;
+  width: 250px;
+  height: 110px;
+  margin-left: 40px;
   background: white;
   z-index: 100;
   padding: 25px;
   box-shadow: $box-shading;
   @media screen and (max-width: $md-bp) { 
-    width: 225px;
-    height: 90px;
+    width: 200px;
+    height: 80px;
     margin-left: 20px;
   }
+}
+#call-us {
+  grid-column: 2/3;
+  grid-row: 1/4;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  p {
+    margin: 0px;
+  }
+  @media screen and (max-width: $sm-bp) { 
+    display:none;
+  }
+
 }
 #image-banner {
   background: $dark-gray;
