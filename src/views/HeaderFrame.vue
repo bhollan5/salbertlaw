@@ -179,7 +179,7 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
   overflow-x: hidden;
   min-height: 100%;
   @media screen and (max-width: $md-bp) {
-    grid-template-rows: 80px 30px 300px 1fr 500px 100px;
+    grid-template-rows: 40px 30px 300px 1fr 500px 100px;
 
     grid-template-columns: 5% 90% 5%;
   }
@@ -292,14 +292,14 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
   height: 125px;
   margin-left: 40px;
   background: white;
-  z-index: 100;
+  z-index: 101;
   padding: 10px 25px;
   box-shadow: $box-shading;
   img {
     width: 100%;
   }
   @media screen and (max-width: $md-bp) { 
-    width: 200px;
+    width: 150px;
     height: 80px;
     margin-left: 20px;
   }

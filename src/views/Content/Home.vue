@@ -1,5 +1,5 @@
 <template>
-<div class="flex-content">
+<div class="flex-content main-content">
 
   <div class="left-side-content">
     <div class="red-quote">
@@ -19,7 +19,7 @@
     <div class="map-subtitle drop-shadow flex-content">
       <img src="@/assets/maps/juried-trials-marker.gif">
       <div>
-        <p class="b">140 JURIED TRIALS TO CONCLUSION</p>
+        <p class="b">140 JURY TRIALS</p>
         <p>» 125 trials in Ohio</p>
         <p>» 15 others across the U.S.</p>
       </div>
