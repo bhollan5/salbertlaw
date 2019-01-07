@@ -2,7 +2,7 @@
   <div id="header-frame">
 
     <div id="logo">
-      <img src="@/assets/albert_logo.svg">
+      <img src="@/assets/albert_logo.png">
     </div>
     <div id="call-us">
       <p style="opacity:.5;">Call Us:</p>
@@ -10,6 +10,55 @@
     </div>
 
     <div id="menu-options-container">
+      <!-- Technically empty, the menu is below -->
+    </div>
+
+    <div id="menu-options" class="non-desktop-menu-options">
+      <router-link tag="div" class="menu-opt" to="/">
+        Menu <img src="@/assets/hamburger_icon.png" width="10px" style="margin-left: 10px;">
+        <div class="dropdown-menu" id="main-dropdown">
+          <router-link tag="div" class="menu-opt" to="/">
+            Firm Overview
+          </router-link>
+          <router-link tag="div" class="menu-label" to="/">
+            Attorneys ▾
+          </router-link>
+          <div class="sub-menu">
+            <router-link tag="div" class="menu-opt" to="/">
+              Steven Albert 
+            </router-link>
+            <router-link tag="div" class="menu-opt" to="/">
+              Nicholas Holland 
+            </router-link>
+            <router-link tag="div" class="menu-opt" to="/">
+              Andrew ?
+            </router-link>
+          </div>
+          <div class="menu-label">
+            Areas of Expertise ▾
+          </div>
+          <div class="sub-menu">
+            <router-link tag="div" class="menu-opt" to="/">
+              Business Litigation
+            </router-link>
+            <router-link tag="div" class="menu-opt" to="/">
+              Employment Litigation
+            </router-link>
+            <router-link tag="div" class="menu-opt" to="/">
+              Product Liability Litigation
+            </router-link>
+          </div>
+          <div class="menu-opt">
+            Our Work
+          </div>
+          <router-link tag="div" class="menu-opt" to="/">
+            Updated Legal Issues
+          </router-link>
+          <router-link tag="div" class="menu-opt" to="/">
+            Contact Us
+          </router-link>
+        </div>
+      </router-link>
     </div>
 
     <div id="menu-options" class="desktop-menu-options">
@@ -54,13 +103,9 @@
         Contact Us
       </router-link>
     </div>
-    <div id="menu-options" class="non-desktop-menu-options">
-      <router-link tag="div" class="menu-opt" to="/">
-        Menu <img src="@/assets/hamburger_icon.png" width="10px" style="margin-left: 10px;">
-      </router-link>
-    </div>
 
     <div id="image-banner">
+      <div id="image-banner-shadow"></div>
       <div id="banner-image-container">
         <img id="banner-image" src="@/assets/banner_images/columns.png">
       </div>
@@ -173,21 +218,43 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
       position: absolute;
       z-index: 100;
       top: 100%;
-      width: 150px;
+      width: 180px;
       display: none;
+      opacity: .9;
+
       div {
         background: $light-gray;
         padding: 0px 10px;
         margin: 0px;
         border: solid 1px $gray;
-        opacity: .9;
       }
-      div:hover {
+      div:hover:not(.menu-label) {
         background: $gray;
       }
     }
+    .menu-label {
+      color: $gray;
+      border-bottom: none !important;
+      cursor: default;
+    }
+    .sub-menu {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      height: auto;
+      padding: 0px !important; // Overriding padding in  .dropdown-menu div
+      margin: 0px;
+      border: none !important; // Overriding border in  .dropdown-menu div
+      div {
+        padding: 5px;
+        padding-right: 20px;
+        margin: 0px;
+        width: calc(100% - 25px);
+        border: none;
+      }
+    }
   }
-  div:hover {
+  div:hover:not(.menu-label ) {
     color: $red;
     .dropdown-menu {
       display: block;
@@ -209,18 +276,28 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
     display: none !important;
   }
 }
+#main-dropdown {
+  right: 0px;
+  opacity: 1 !important;
+  div {
+    justify-content: flex-end; // Right aligning text in this dropdown
+  }
+}
 
 #logo {
   opacity: 1;
   grid-column: 2/3;
   grid-row: 1/4;
   width: 250px;
-  height: 110px;
+  height: 125px;
   margin-left: 40px;
   background: white;
   z-index: 100;
-  padding: 25px;
+  padding: 10px 25px;
   box-shadow: $box-shading;
+  img {
+    width: 100%;
+  }
   @media screen and (max-width: $md-bp) { 
     width: 200px;
     height: 80px;
@@ -244,7 +321,6 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
 #image-banner {
   background: $dark-gray;
   grid-area: banner-image;
-  box-shadow: $heavy-inset-box-shading;
   overflow-y: hidden;
   position: relative;
 
@@ -257,6 +333,12 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
     margin: 0px;
     color: white;
   }
+}
+#image-banner-shadow {
+  box-shadow: $heavy-inset-box-shading;
+  position: absolute;
+  width: 100%;
+  height: 100%; 
 }
 #banner-image-container {
   height: 100%;
