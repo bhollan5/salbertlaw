@@ -1,9 +1,9 @@
 <template>
   <div id="header-frame">
 
-    <div id="logo">
+    <router-link tag="div" id="logo" to="home">
       <img src="@/assets/albert_logo.png">
-    </div>
+    </router-link>
     <div id="call-us">
       <p style="opacity:.5;">Call Us:</p>
       <p style="font-weight: bold;opacity:.8;">216-360-0800</p>
@@ -17,7 +17,7 @@
       <router-link tag="div" class="menu-opt" to="/">
         Menu <img src="@/assets/hamburger_icon.png" width="10px" style="margin-left: 10px;">
         <div class="dropdown-menu" id="main-dropdown">
-          <router-link tag="div" class="menu-opt" to="/">
+          <router-link tag="div" class="menu-opt" to="/firm-overview">
             Firm Overview
           </router-link>
           <router-link tag="div" class="menu-label" to="/">
@@ -62,7 +62,7 @@
     </div>
 
     <div id="menu-options" class="desktop-menu-options">
-      <router-link tag="div" class="menu-opt" to="/">
+      <router-link tag="div" class="menu-opt" :to="{name: 'frame', params: {pageID: 'firm-overview'} }">
         Firm Overview
       </router-link>
       <router-link tag="div" class="menu-opt" to="/">
@@ -107,13 +107,16 @@
     <div id="image-banner">
       <div id="image-banner-shadow"></div>
       <div id="banner-image-container">
-        <img id="banner-image" src="@/assets/banner_images/columns.png">
+        <img id="banner-image" v-if="header" :src="header.primary.banner_image.url">
       </div>
       <h1></h1>
     </div>
 
     <div id="content">
-      <router-view></router-view>
+      <content-template
+        v-if="left_content"
+        :pageData="left_content.primary"
+      ></content-template>
     </div>
 
     <div id="expertise-footer">
@@ -143,11 +146,48 @@
 </template>
 
 <script>
-// @ is an alias to /src
+var Prismic = require('prismic-javascript');
+
+import ContentTemplate from '@/views/ContentTemplate.vue';
 
 export default {
   name: 'home',
+  data() {
+    return {
+      header: null,
+      left_content: null,
+      right_content: null,
+    }
+  },
+
+  // This code makes more sense than the watch function below, but somehow breaks the router links?
+  //
+  // beforeRouteUpdate (to, from, next) {
+  //   this.refreshPageData(to.params.pageID);
+  // },
+
+  watch: {
+    '$route': function (to, from) {
+      this.refreshPageData(to.params.pageID);
+    }
+  },
+  mounted() {
+    this.refreshPageData(this.$route.params.pageID);
+  },
+  methods: {
+    refreshPageData(pageID) {
+      this.$prismic.client.getByUID('page', pageID)
+        .then((document) => {
+          console.warn(document);
+          let doc_data = document.data.body;
+          console.log(doc_data);
+          this.left_content = doc_data.find(o => o.slice_type === 'left_content');
+          this.header = doc_data.find(o => o.slice_type === 'header');
+        })
+    },
+  },
   components: {
+    ContentTemplate
   }
 }
 </script>
@@ -193,6 +233,10 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
   height: 100%;
   margin-left: -5%;
   color: black;
+}
+.router-link-active {
+  color: $red;
+  font-weight: bold;
 }
 #menu-options {
   grid-row: 2/3;
@@ -285,6 +329,7 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
 }
 
 #logo {
+  cursor: pointer;
   opacity: 1;
   grid-column: 2/3;
   grid-row: 1/4;
@@ -313,7 +358,7 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
   p {
     margin: 0px;
   }
-  @media screen and (max-width: $sm-bp) { 
+  @media screen and (max-width: $md-bp) { 
     display:none;
   }
 

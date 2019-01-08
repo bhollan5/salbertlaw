@@ -3,10 +3,10 @@
 
   <div class="left-side-content">
     <div class="red-quote">
-      {{copy.red_text[0].text}}
+      {{pageData.red_text[0].text}}
     </div>
     <div class="red-subtitle">
-      We invite you to learn more about our areas of expertise at the links below, view <a href="#">MR. ALBERT’S PROFESSIONAL BIOGRAPHY</a>, or <a href="#">CONTACT US</a> today.
+      {{pageData.main_text[0].text}}
     </div>
   </div>
 
@@ -44,21 +44,16 @@ var Prismic = require('prismic-javascript');
 export default {
   data() {
     return {
-      copy: null
     }
   },
+  props: {
+    pageData: {
+      type: Object
+    }
+  },
+
   mounted() {
-    var vm = this;
-    Prismic.getApi("https://salbertlaw.cdn.prismic.io/api/v2").then(function(api) {
-      api.getByUID('page', 'landing-page').then(function(document) {
-        if (document) {
-          console.log(document);
-          vm.copy = document.data;
-        } else {
-          console.error("Trouble finding your page!")
-        }
-      });
-    });
+    
   }
 }
 </script>

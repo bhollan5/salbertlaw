@@ -10,15 +10,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: HeaderFrame,
-      children: [
-        {
-          path: '',
-          name: 'Home',
-          component: () => import(/* webpackChunkName: "home" */ './views/Content/Home.vue')
-        }
-      ]
+      redirect: '/home'
     },
+    {
+      path: '/:pageID',
+      component: HeaderFrame,
+      name: 'frame',
+    },  
     {
       path: '/about',
       name: 'about',
