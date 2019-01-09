@@ -24,7 +24,7 @@
             Attorneys ▾
           </router-link>
           <div class="sub-menu">
-            <router-link tag="div" class="menu-opt" to="/">
+            <router-link tag="div" class="menu-opt" to="/steven-w-albert">
               Steven Albert 
             </router-link>
             <router-link tag="div" class="menu-opt" to="/">
@@ -38,13 +38,13 @@
             Areas of Expertise ▾
           </div>
           <div class="sub-menu">
-            <router-link tag="div" class="menu-opt" to="/">
+            <router-link tag="div" class="menu-opt" to="/business-litigation">
               Business Litigation
             </router-link>
-            <router-link tag="div" class="menu-opt" to="/">
+            <router-link tag="div" class="menu-opt" to="/employment-litigation">
               Employment Litigation
             </router-link>
-            <router-link tag="div" class="menu-opt" to="/">
+            <router-link tag="div" class="menu-opt" to="/product-liability-litigation">
               Product Liability Litigation
             </router-link>
           </div>
@@ -65,10 +65,10 @@
       <router-link tag="div" class="menu-opt" :to="{name: 'frame', params: {pageID: 'firm-overview'} }">
         Firm Overview
       </router-link>
-      <router-link tag="div" class="menu-opt" to="/">
+      <div class="menu-opt" >
         Attorneys ▾
         <div class="dropdown-menu">
-          <router-link tag="div" class="menu-opt" to="/">
+          <router-link tag="div" class="menu-opt" to="/steven-w-albert">
             Steven Albert 
           </router-link>
           <router-link tag="div" class="menu-opt" to="/">
@@ -78,17 +78,17 @@
             Andrew ?
           </router-link>
         </div>
-      </router-link>
+      </div>
       <div class="menu-opt">
         Areas of Expertise ▾
         <div class="dropdown-menu">
-          <router-link tag="div" class="menu-opt" to="/">
+          <router-link tag="div" class="menu-opt" to="/business-litigation">
             Business Litigation
           </router-link>
-          <router-link tag="div" class="menu-opt" to="/">
+          <router-link tag="div" class="menu-opt" to="/employment-litigation">
             Employment Litigation
           </router-link>
-          <router-link tag="div" class="menu-opt" to="/">
+          <router-link tag="div" class="menu-opt" to="/product-liability-litigation">
             Product Liability Litigation
           </router-link>
         </div>
@@ -124,16 +124,19 @@
         <h3>Business Litigation</h3>
         <h4>SOLVING BUSINESS DISPUTES</h4>
         <p>For 40 years, Mr. Albert has successfully represented public companies and privately held corporations in a variety of business disputes.</p>
+        <router-link to="/business-litigation">LEARN MORE  →</router-link>
       </div>
       <div class="area-of-expertise">
         <h3>Employment Litigation</h3>
         <h4>EMPLOYEE AND EMPLOYER REPRESENTATION</h4>
         <p>Mr. Albert has extensive experience in creating policies and representing employers and employees.</p>
+        <router-link to="/employment-litigation">LEARN MORE  →</router-link>
       </div>
       <div class="area-of-expertise">
         <h3>Product Liability Litigation</h3>
         <h4>REPRESENTING COMPANIES AND INDIVIDUALS</h4>
         <p>Mr. Albert has successfully represented private and public corporations as well as individuals in product liability litigation.</p>
+        <router-link to="/product-liability-litigation">LEARN MORE  →</router-link>
       </div>
     </div>
 
@@ -180,7 +183,7 @@ export default {
         .then((document) => {
           console.warn(document);
           let doc_data = document.data.body;
-          console.log(doc_data);
+
           this.left_content = doc_data.find(o => o.slice_type === 'left_content');
           this.header = doc_data.find(o => o.slice_type === 'header');
         })
@@ -437,6 +440,17 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
   }
   p {
     font-size: 12px;
+    margin: 0px;
+  }
+  a {
+    color: $red;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0px;
+  }
+  a:hover {
+    text-decoration: underline;
   }
 }
 

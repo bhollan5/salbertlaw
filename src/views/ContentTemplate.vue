@@ -6,7 +6,7 @@
       {{pageData.red_text[0].text}}
     </div>
     <div class="red-subtitle">
-      {{pageData.main_text[0].text}}
+      <prismic-rich-text :field="pageData.main_text"/>
     </div>
   </div>
 
