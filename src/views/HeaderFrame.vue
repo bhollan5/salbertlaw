@@ -48,13 +48,13 @@
               Product Liability Litigation
             </router-link>
           </div>
-          <div class="menu-opt">
+          <router-link tag="div" class="menu-opt" to="/our-work">
             Our Work
-          </div>
-          <router-link tag="div" class="menu-opt" to="/">
+          </router-link>
+          <router-link tag="div" class="menu-opt" to="/updated-legal-issues">
             Updated Legal Issues
           </router-link>
-          <router-link tag="div" class="menu-opt" to="/">
+          <router-link tag="div" class="menu-opt" to="/contact-us">
             Contact Us
           </router-link>
         </div>
@@ -93,23 +93,24 @@
           </router-link>
         </div>
       </div>
-      <div class="menu-opt">
+      <router-link tag="div" class="menu-opt" to="/our-work">
         Our Work
-      </div>
-      <router-link tag="div" class="menu-opt" to="/">
+      </router-link>
+      <router-link tag="div" class="menu-opt" to="/updated-legal-issues">
         Updated Legal Issues
       </router-link>
-      <router-link tag="div" class="menu-opt" to="/">
+      <router-link tag="div" class="menu-opt" to="/contact-us">
         Contact Us
       </router-link>
     </div>
 
     <div id="image-banner">
+      
       <div id="image-banner-shadow"></div>
       <div id="banner-image-container">
         <img id="banner-image" v-if="header" :src="header.primary.banner_image.url">
       </div>
-      <h1></h1>
+      <h1 v-if="header && header.primary.white_text">{{header.primary.white_text[0].text}}</h1>
     </div>
 
     <div id="content">
@@ -374,12 +375,18 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
 
   h1 {
     position: absolute;
-    bottom: -15px;
+    bottom: -10px;
     font-size: 40px;
+    text-shadow: 0px 0px 10px rgba(0,0,0,.4);
     font-weight: bolder;
-    left: 25%;
+    max-width: 50%;
+    left: 22%;
     margin: 0px;
     color: white;
+    font-family: Verdana;
+    @media screen and (max-width: $md-bp) {
+      left: 10%;
+    }
   }
 }
 #image-banner-shadow {

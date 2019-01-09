@@ -7,6 +7,7 @@
     </div>
     <div class="red-subtitle">
       <prismic-rich-text :field="pageData.main_text"/>
+      
     </div>
   </div>
 
