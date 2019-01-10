@@ -50,7 +50,10 @@ export default {
   props: {
     pageData: {
       type: Object
-    }
+    },
+    map: {
+      type: Object
+    },
   },
 
   mounted() {

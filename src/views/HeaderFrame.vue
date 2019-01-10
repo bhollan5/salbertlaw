@@ -117,6 +117,7 @@
       <content-template
         v-if="left_content"
         :pageData="left_content.primary"
+        :map="map_content.primary"
       ></content-template>
     </div>
 
@@ -160,7 +161,7 @@ export default {
     return {
       header: null,
       left_content: null,
-      right_content: null,
+      map_content: null,
     }
   },
 
@@ -182,11 +183,11 @@ export default {
     refreshPageData(pageID) {
       this.$prismic.client.getByUID('page', pageID)
         .then((document) => {
-          console.warn(document);
           let doc_data = document.data.body;
 
           this.left_content = doc_data.find(o => o.slice_type === 'left_content');
           this.header = doc_data.find(o => o.slice_type === 'header');
+          this.map_content = doc_data.find(o => o.slice_type === 'map_content');
         })
     },
   },
@@ -337,12 +338,12 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
   opacity: 1;
   grid-column: 2/3;
   grid-row: 1/4;
-  width: 250px;
-  height: 125px;
+  width: 200px;
+  height: 120px;
   margin-left: 40px;
   background: white;
   z-index: 101;
-  padding: 10px 25px;
+  padding: 20px 25px;
   box-shadow: $box-shading;
   img {
     width: 100%;
@@ -443,7 +444,7 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
   }
   h4 {
     margin-top: 0px;
-    font-size: 12px;
+    font-size: 10px;
   }
   p {
     font-size: 12px;
