@@ -117,7 +117,8 @@
       <content-template
         v-if="left_content"
         :pageData="left_content.primary"
-        :map="map_content.primary"
+        :mapContent="map_content"
+        :contactInfo="contact_info"
       ></content-template>
     </div>
 
@@ -162,6 +163,8 @@ export default {
       header: null,
       left_content: null,
       map_content: null,
+
+      contact_info: null
     }
   },
 
@@ -178,8 +181,15 @@ export default {
   },
   mounted() {
     this.refreshPageData(this.$route.params.pageID);
+    this.getContactInfo();
   },
   methods: {
+    getContactInfo() {
+      this.$prismic.client.getSingle('contact_info').then((document) => {
+        let doc_data = document.data;
+        this.contact_info = doc_data;
+      })
+    },
     refreshPageData(pageID) {
       this.$prismic.client.getByUID('page', pageID)
         .then((document) => {
@@ -343,7 +353,7 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
   margin-left: 40px;
   background: white;
   z-index: 101;
-  padding: 20px 25px;
+  padding: 30px 25px 20px 15px;
   box-shadow: $box-shading;
   img {
     width: 100%;
@@ -352,6 +362,8 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
     width: 150px;
     height: 80px;
     margin-left: 20px;
+    padding: 20px 25px 20px 25px;
+
   }
 }
 #call-us {
