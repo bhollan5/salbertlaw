@@ -4,9 +4,11 @@
     <router-link tag="div" id="logo" to="home">
       <img src="@/assets/albert_logo.png">
     </router-link>
-    <div id="call-us">
+    <div id="call-us" v-if="contact_info && contact_info.phone[0]">
       <p style="opacity:.5;">Call Us:</p>
-      <p style="font-weight: bold;opacity:.8;">216-360-0800</p>
+      <a href="tel:216-360-0800" style="font-weight: bold;opacity:.8;color:#383838;text-decoration:none">
+        {{contact_info.phone[0].text}}
+      </a>
     </div>
 
     <div id="menu-options-container">
@@ -108,15 +110,16 @@
       
       <div id="image-banner-shadow"></div>
       <div id="banner-image-container">
-        <img id="banner-image" v-if="header" :src="header.primary.banner_image.url">
+        <img id="banner-image" v-if="header && header.primary" :src="header.primary.banner_image.url">
       </div>
-      <h1 v-if="header && header.primary.white_text">{{header.primary.white_text[0].text}}</h1>
+      <h1 v-if="header && header.primary && header.primary.white_text">{{header.primary.white_text[0].text}}</h1>
     </div>
 
     <div id="content">
       <content-template
         v-if="left_content"
         :pageData="left_content.primary"
+        :blogData="left_content.items"
         :mapContent="map_content"
         :contactInfo="contact_info"
       ></content-template>
@@ -191,6 +194,10 @@ export default {
       })
     },
     refreshPageData(pageID) {
+      this.left_content = {}
+      this.header = {}
+      this.map_content = {}
+
       this.$prismic.client.getByUID('page', pageID)
         .then((document) => {
           let doc_data = document.data.body;
@@ -219,7 +226,7 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
   text-align: left;
   position: absolute;
   display: grid;
-  grid-template-rows: 80px 30px 300px 1fr 200px 50px;
+  grid-template-rows: 80px 30px 300px 1fr auto 50px;
   grid-template-columns: $margin-size $content-size $margin-size;
   grid-template-areas: 
     "margin-top   margin-top    margin-top"

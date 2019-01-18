@@ -2,12 +2,15 @@
 <div class="flex-content main-content">
 
   <div class="left-side-content">
-    <div class="red-quote">
+    <div class="red-quote" v-if="pageData && pageData.red_text">
       {{pageData.red_text[0].text}}
     </div>
-    <div class="red-subtitle">
-      <prismic-rich-text :field="pageData.main_text"/>
-      
+    <div class="page-content">
+      <prismic-rich-text v-if="pageData && pageData.main_text" :field="pageData.main_text"/>
+    </div>
+
+    <div class="blog-content" v-if="blogData && blogData[0].blog_post_title.length > 0" v-for="post in blogData">
+      <prismic-rich-text :field="pageData.blog_post_title"/>
     </div>
   </div>
 
@@ -76,13 +79,16 @@ export default {
     }
   },
   props: {
-    pageData: {
+    pageData: { // Main content on all pages
       type: Object
     },
-    mapContent: {
+    blogData: { // Data for blog type pages
+      type: Array
+    },
+    mapContent: { // Optional map data
       type: Object
     },
-    contactInfo: {
+    contactInfo: { // Static contact data (Address, phone, etc)
       type: Object
     }
   },

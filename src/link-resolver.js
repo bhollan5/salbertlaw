@@ -8,7 +8,7 @@ export default function (doc) {
     }
     // If it is a Repeatable Custom Type with the API ID of "page" (must contain a UID field)
     if (doc.type === 'page') {
-      return '/page/' + doc.uid;
+      return '/' + doc.uid;
     }
    
     // Default to the root
