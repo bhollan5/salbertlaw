@@ -201,7 +201,7 @@ export default {
       this.$prismic.client.getByUID('page', pageID)
         .then((document) => {
           let doc_data = document.data.body;
-
+          console.log("Loading page data: ", doc_data)
           this.left_content = doc_data.find(o => o.slice_type === 'left_content');
           this.header = doc_data.find(o => o.slice_type === 'header');
           this.map_content = doc_data.find(o => o.slice_type === 'map_content');

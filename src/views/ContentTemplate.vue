@@ -5,13 +5,24 @@
     <div class="red-quote" v-if="pageData && pageData.red_text">
       {{pageData.red_text[0].text}}
     </div>
-    <div class="page-content">
-      <prismic-rich-text v-if="pageData && pageData.main_text" :field="pageData.main_text"/>
+    <div class="page-content" v-if="pageData">
+      <prismic-rich-text v-if="pageData.main_text" :field="pageData.main_text"/>
+
+      <div v-for="post in blogData">
+        <div class="red-quote" style="padding-left: 0px;padding-bottom:0px;"> 
+                              <!-- Inline styling overrides .red-quote-->
+          {{post.blog_post_title[0].text}}
+        </div>
+        <div class="red-date">
+          {{ months[new Date(post.blog_date).getMonth()]}}
+          {{new Date(post.blog_date).getDate()}},
+          {{new Date(post.blog_date).getFullYear()}}
+        </div>
+        <prismic-rich-text :field="post.blog_content"></prismic-rich-text>
+      </div>
+      
     </div>
 
-    <div class="blog-content" v-if="blogData && blogData[0].blog_post_title.length > 0" v-for="post in blogData">
-      <prismic-rich-text :field="pageData.blog_post_title"/>
-    </div>
   </div>
 
   <div class="right-side-content">
@@ -76,6 +87,20 @@ var Prismic = require('prismic-javascript');
 export default {
   data() {
     return {
+      months: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+      ]
     }
   },
   props: {
