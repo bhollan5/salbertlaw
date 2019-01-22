@@ -2,14 +2,16 @@
 <div class="flex-content main-content">
 
   <div class="left-side-content">
+    
     <div class="red-quote" v-if="pageData && pageData.red_text">
-      {{pageData.red_text[0].text}}
+      {{ $prismic.richTextAsPlain(pageData.red_text)}}
     </div>
     <div class="page-content" v-if="pageData">
       <prismic-rich-text v-if="pageData.main_text" :field="pageData.main_text"/>
 
-      <div v-for="post in blogData">
-        <div class="red-quote" style="padding-left: 0px;padding-bottom:0px;"> 
+      <div v-for="post in blogData" v-if="blogData">
+        <div class="red-quote" style="padding-left: 0px;padding-bottom:0px;"
+        v-if="post.blog_post_title && post.blog_post_title[0]"> 
                               <!-- Inline styling overrides .red-quote-->
           {{post.blog_post_title[0].text}}
         </div>

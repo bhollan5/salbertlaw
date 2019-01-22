@@ -6,7 +6,7 @@
     </router-link>
     <div id="call-us" v-if="contact_info && contact_info.phone[0]">
       <p style="opacity:.5;">Call Us:</p>
-      <a href="tel:216-360-0800" style="font-weight: bold;opacity:.8;color:#383838;text-decoration:none">
+      <a :href="'tel:' + contact_info.phone[0].text" style="font-weight: bold;opacity:.8;color:#383838;text-decoration:none">
         {{contact_info.phone[0].text}}
       </a>
     </div>
@@ -33,7 +33,7 @@
               Nicholas Holland 
             </router-link>
             <router-link tag="div" class="menu-opt" to="/">
-              Andrew ?
+              Andrew Peterson
             </router-link>
           </div>
           <div class="menu-label">
@@ -77,7 +77,7 @@
             Nicholas Holland 
           </router-link>
           <router-link tag="div" class="menu-opt" to="/">
-            Andrew ?
+            Andrew Peterson
           </router-link>
         </div>
       </div>
@@ -146,9 +146,16 @@
       </div>
     </div>
 
-    <div id="footer">
+    <div id="footer" v-if="contact_info">
       <p>© 2019 The Albert Law Firm. All rights reserved.	</p>
-      <p>29425 Chagrin Blvd &nbsp; Suite 216 &nbsp; Pepper Pike, OH 44122 &nbsp; T: 216-360-0800 &nbsp; salbert@salbertlaw.com</p>
+      <p>{{contact_info.address_line_1[0].text}} &nbsp; 
+      {{contact_info.address_line_2[0].text}} &nbsp; 
+      {{contact_info.address_line_3[0].text}} &nbsp; 
+      T: <a :href="'tel:' + contact_info.phone[0].text" style="color: #CBCCCE;text-decoration:none;">
+        {{contact_info.phone[0].text}}
+      </a> &nbsp;  <a :href="'mailto: ' + contact_info.email[0].text" style="color: #CBCCCE">
+      {{contact_info.email[0].text}}
+      </a></p>
     </div>
 
   </div>
