@@ -9,7 +9,7 @@
     <div class="page-content" v-if="pageData">
       <prismic-rich-text v-if="pageData.main_text" :field="pageData.main_text"/>
 
-      <div v-for="post in blogData" v-if="blogData">
+      <div v-for="post in blogData" v-if="blogData && blogData[0].blog_date">
         <div class="red-quote" style="padding-left: 0px;padding-bottom:0px;"
         v-if="post.blog_post_title && post.blog_post_title[0]"> 
                               <!-- Inline styling overrides .red-quote-->

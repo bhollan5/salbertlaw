@@ -29,10 +29,10 @@
             <router-link tag="div" class="menu-opt" to="/steven-w-albert">
               Steven Albert 
             </router-link>
-            <router-link tag="div" class="menu-opt" to="/">
+            <router-link tag="div" class="menu-opt" to="/nicholas-holland">
               Nicholas Holland 
             </router-link>
-            <router-link tag="div" class="menu-opt" to="/">
+            <router-link tag="div" class="menu-opt" to="/andrew-peterson">
               Andrew Peterson
             </router-link>
           </div>
@@ -207,6 +207,10 @@ export default {
 
       this.$prismic.client.getByUID('page', pageID)
         .then((document) => {
+          if (!document) {
+            console.log("Page not found.");
+            this.$router.push('/')
+          }
           let doc_data = document.data.body;
           console.log("Loading page data: ", doc_data)
           this.left_content = doc_data.find(o => o.slice_type === 'left_content');
