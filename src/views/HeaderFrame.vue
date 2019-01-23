@@ -73,10 +73,10 @@
           <router-link tag="div" class="menu-opt" to="/steven-w-albert">
             Steven Albert 
           </router-link>
-          <router-link tag="div" class="menu-opt" to="/">
+          <router-link tag="div" class="menu-opt" to="/nicholas-holland">
             Nicholas Holland 
           </router-link>
-          <router-link tag="div" class="menu-opt" to="/">
+          <router-link tag="div" class="menu-opt" to="/andrew-peterson">
             Andrew Peterson
           </router-link>
         </div>
