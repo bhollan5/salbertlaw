@@ -237,7 +237,7 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
   text-align: left;
   position: absolute;
   display: grid;
-  grid-template-rows: 80px 30px 300px 1fr auto 50px;
+  grid-template-rows: 120px 30px 300px 1fr auto 50px;
   grid-template-columns: $margin-size $content-size $margin-size;
   grid-template-areas: 
     "margin-top   margin-top    margin-top"
@@ -252,7 +252,7 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
   overflow-x: hidden;
   min-height: 100%;
   @media screen and (max-width: $md-bp) {
-    grid-template-rows: 40px 30px 300px 1fr 500px 100px;
+    grid-template-rows: 80px 30px 300px 1fr 500px 100px;
 
     grid-template-columns: 5% 90% 5%;
   }
@@ -274,9 +274,9 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
 #menu-options {
   grid-row: 2/3;
   grid-column: 2/3;
-  padding-left: 350px;
+  // padding-left: 350px;
   height: 30px;
-  width: calc(100% - 400px);
+  width: 100%;
   display: flex;
   align-items: center;
   div {
@@ -341,7 +341,7 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
 
 .desktop-menu-options {
   justify-content: space-around;
-  @media screen and (max-width: $lg-bp) {
+  @media screen and (max-width: $md-bp) {
     display: none !important;
 
   }
@@ -349,7 +349,7 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
 .non-desktop-menu-options {
   justify-content: flex-end;
   
-  @media screen and (min-width: $lg-bp) {
+  @media screen and (min-width: $md-bp) {
     display: none !important;
   }
 }
@@ -366,22 +366,21 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
   opacity: 1;
   grid-column: 2/3;
   grid-row: 1/4;
-  width: 200px;
-  height: 120px;
-  margin-left: 40px;
-  background: white;
+  // width: 200px;
+  height: 65px;
   z-index: 101;
-  padding: 30px 25px 20px 15px;
-  box-shadow: $box-shading;
+  padding: 40px 25px 20px 15px;
   img {
-    width: 100%;
+    height: 50px;
   }
   @media screen and (max-width: $md-bp) { 
     width: 150px;
     height: 80px;
-    margin-left: 20px;
+    margin-left: 0px;
     padding: 20px 25px 20px 25px;
-
+    img {
+      height: 35px;
+    } 
   }
 }
 #call-us {
@@ -389,14 +388,15 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
   grid-row: 1/4;
   position: absolute;
   right: 20px;
-  top: 20px;
+  top: 40px;
+  font-size: 20px;
   p {
     margin: 0px;
+    font-size: 17px;
   }
   @media screen and (max-width: $md-bp) { 
     display:none;
   }
-
 }
 #image-banner {
   background: $dark-gray;
@@ -431,6 +431,9 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
   width: $content-size;
   margin-left: $margin-size;
   overflow: hidden;
+  img {
+    width: 100%;
+  }
   @media screen and (max-width: $md-bp) {
     width: $mobile-content-size;
     margin-left: $mobile-margin-size;
