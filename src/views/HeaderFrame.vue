@@ -23,7 +23,7 @@
             Firm Overview
           </router-link>
           <router-link tag="div" class="menu-label" to="/">
-            Attorneys ▾
+            Professionals ▾
           </router-link>
           <div class="sub-menu">
             <router-link tag="div" class="menu-opt" to="/steven-w-albert">
@@ -34,6 +34,9 @@
             </router-link>
             <router-link tag="div" class="menu-opt" to="/andrew-peterson">
               Andrew Peterson
+            </router-link>
+            <router-link tag="div" class="menu-opt" to="/rebecca-cimino">
+              Rebecca Cimino
             </router-link>
           </div>
           <div class="menu-label">
@@ -68,7 +71,7 @@
         Firm Overview
       </router-link>
       <div class="menu-opt" >
-        Attorneys ▾
+        Professionals ▾
         <div class="dropdown-menu">
           <router-link tag="div" class="menu-opt" to="/steven-w-albert">
             Steven Albert 
@@ -78,6 +81,9 @@
           </router-link>
           <router-link tag="div" class="menu-opt" to="/andrew-peterson">
             Andrew Peterson
+          </router-link>
+          <router-link tag="div" class="menu-opt" to="/rebecca-cimino">
+            Rebecca Cimino
           </router-link>
         </div>
       </div>
@@ -511,5 +517,9 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
     width: $mobile-content-size;
     padding: 0px $mobile-margin-size;
   }
+}
+
+.active-link {
+  color: $red;
 }
 </style>

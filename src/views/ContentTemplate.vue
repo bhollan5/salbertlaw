@@ -9,7 +9,7 @@
     <div class="page-content" v-if="pageData">
       <prismic-rich-text v-if="pageData.main_text" :field="pageData.main_text"/>
 
-      <div v-for="post in blogData" v-if="blogData && blogData[0].blog_date">
+      <div v-for="post in sortedBlogData" v-if="sortedBlogData && sortedBlogData[0].blog_date">
         <div class="red-quote" style="padding-left: 0px;padding-bottom:0px;"
         v-if="post.blog_post_title && post.blog_post_title[0]"> 
                               <!-- Inline styling overrides .red-quote-->
@@ -126,6 +126,15 @@ export default {
         return this.mapContent.primary;
       else 
         return null
+    },
+    sortedBlogData() {
+      var sortedArray = this.blogData;
+      sortedArray.sort(function(a,b){
+        // Turn strings into dates, and then subtract them
+        // to get a value that is either negative, positive, or zero.
+        return new Date(b.blog_date) - new Date(a.blog_date);
+      });
+      return sortedArray;
     }
   },
 
