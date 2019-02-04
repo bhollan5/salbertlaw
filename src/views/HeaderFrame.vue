@@ -286,7 +286,7 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
   display: flex;
   align-items: center;
   div {
-    font-size: 10px;
+    font-size: 12px;
     color: $dark-gray;
     cursor: pointer;
     text-decoration: none;
@@ -334,6 +334,7 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
         margin: 0px;
         width: calc(100% - 25px);
         border: none;
+        font-size: 20px;
       }
     }
   }

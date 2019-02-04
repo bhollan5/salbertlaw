@@ -146,6 +146,11 @@ export default {
 
 <style lang="scss">
 @import '@/ContentStyling.scss';
-
+.block-img img {
+    max-width: 100%;
+    float: right;
+    margin: 10px;
+    margin-bottom: 20px;
+}
 
 </style>
