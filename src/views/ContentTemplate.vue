@@ -90,6 +90,15 @@
       <router-link tag="div" to="/product-liability-litigation">
         Product Liability Litigation →
       </router-link>
+      <router-link tag="div" to="/personal-injury-litigation">
+        Personal Injury Litigation →
+      </router-link>
+      <router-link tag="div" to="/real-estate-litigation">
+        Real Estate Litigation →
+      </router-link>
+      <router-link tag="div" to="/healthcare-litigation">
+        Healthcare Litigation →
+      </router-link>
       <br>
     </div>
   </div>
