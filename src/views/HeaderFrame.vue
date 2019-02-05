@@ -126,6 +126,7 @@
         v-if="left_content"
         :pageData="left_content.primary"
         :blogData="left_content.items"
+        :rightData="right_content"
         :mapContent="map_content"
         :contactInfo="contact_info"
       ></content-template>
@@ -178,6 +179,7 @@ export default {
     return {
       header: null,
       left_content: null,
+      right_content: null,
       map_content: null,
 
       contact_info: null
@@ -220,6 +222,7 @@ export default {
           let doc_data = document.data.body;
           console.log("Loading page data: ", doc_data)
           this.left_content = doc_data.find(o => o.slice_type === 'left_content');
+          this.right_content = doc_data.find(o => o.slice_type === 'right_content');
           this.header = doc_data.find(o => o.slice_type === 'header');
           this.map_content = doc_data.find(o => o.slice_type === 'map_content');
         })

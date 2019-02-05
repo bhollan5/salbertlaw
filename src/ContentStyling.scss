@@ -40,8 +40,9 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     @media screen and (max-width: $md-bp) { 
+        align-items: center;
         flex-flow: row;
     }
     @media screen and (max-width: $sm-bp) { 
@@ -120,7 +121,7 @@
     box-shadow: $box-shading;
     background: $light-gray;
     font-weight: bold;
-    div {
+    div:not(.custom-text) {
         border-left: 3px solid $blue;
         font-size: 12px;
         margin: 10px 0px;
@@ -128,9 +129,13 @@
         transition-duration: .5s;
 
     }
-    div:hover {
+    div:not(.custom-text):hover {
         background: white;
         cursor:pointer;
+    }
+    .custom-text {
+        font-size: 12px;
+        font-weight: default;
     }
 }
 .raised-container {

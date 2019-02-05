@@ -49,6 +49,14 @@
       </div>
     </div>
 
+    <div class="contact-marker raised-container" v-else-if="rightData">
+      <p class="b">{{rightData.primary.contact_us_card_title[0].text}}</p>
+      <p class="additional-contact" style="opacity:.7;">
+        <prismic-rich-text :field="rightData.primary.contact_us_card_text"></prismic-rich-text>
+      </p>
+      <br>
+    </div>
+
     <div class="contact-marker raised-container" v-else-if="contactInfo">
       <p class="b">Contact Us</p>
       <p class="address-line">{{contactInfo.address_line_1[0].text}}</p>
@@ -61,9 +69,17 @@
       </p>
       <br>
     </div>
-    
-    <div class="areas-of-expertise-links" v-if="!map">
-      <p class="b">Areas of Expertise:</p>
+
+    <div class="areas-of-expertise-links" v-if="!map && rightData">
+      <p class="b">{{rightData.primary.success_stories_card_title[0].text}}</p>
+      <hr style="margin-top: 0px;margin-bottom:20px;">
+      <prismic-rich-text :field="rightData.primary.success_stories_card_text" class="custom-text"></prismic-rich-text>
+      <br>
+    </div>
+  
+  <!-- The default "areas of expertise" box-->
+    <div class="areas-of-expertise-links" v-if="!map && !rightData"> 
+      <p class="b">Areas of Expertise:</p> 
       <hr style="margin-top: 0px;margin-bottom:20px;">
       <router-link tag="div" to="/business-litigation">
         Business Litigation →
@@ -115,9 +131,13 @@ export default {
     mapContent: { // Optional map data
       type: Object
     },
+    rightData: { // Will fill the blue box. Optional. 
+      type: Object
+    },
     contactInfo: { // Static contact data (Address, phone, etc)
       type: Object
-    }
+    },
+
   },
   computed: {
     map() {
@@ -147,7 +167,7 @@ export default {
 <style lang="scss">
 @import '@/ContentStyling.scss';
 .block-img img {
-    max-width: 100%;
+    width: 100%;
     float: right;
     margin: 10px;
     margin-bottom: 20px;
