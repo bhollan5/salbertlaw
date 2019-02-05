@@ -52,6 +52,15 @@
             <router-link tag="div" class="menu-opt" to="/product-liability-litigation">
               Product Liability Litigation
             </router-link>
+            <router-link tag="div" class="menu-opt" to="/personal-injury-litigation">
+              Personal Injury Litigation
+            </router-link>
+            <router-link tag="div" class="menu-opt" to="/real-estate-litigation">
+              Real Estate Litigation
+            </router-link>
+            <router-link tag="div" class="menu-opt" to="/healthcare-litigation">
+              Healthcare Litigation
+            </router-link>
           </div>
           <router-link tag="div" class="menu-opt" to="/our-work">
             Our Work
@@ -98,6 +107,15 @@
           </router-link>
           <router-link tag="div" class="menu-opt" to="/product-liability-litigation">
             Product Liability Litigation
+          </router-link>
+          <router-link tag="div" class="menu-opt" to="/personal-injury-litigation">
+            Personal Injury Litigation
+          </router-link>
+          <router-link tag="div" class="menu-opt" to="/real-estate-litigation">
+            Real Estate Litigation
+          </router-link>
+          <router-link tag="div" class="menu-opt" to="/healthcare-litigation">
+            Healthcare Litigation
           </router-link>
         </div>
       </div>
@@ -337,7 +355,6 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
         margin: 0px;
         width: calc(100% - 25px);
         border: none;
-        font-size: 20px;
       }
     }
   }
@@ -379,15 +396,15 @@ $mobile-content-size:  calc(100% - (2 * #{$mobile-margin-size}));
   // width: 200px;
   height: 65px;
   z-index: 101;
-  padding: 40px 25px 20px 15px;
+  padding: 40px 25px 0px 15px;
   img {
     height: 50px;
   }
   @media screen and (max-width: $md-bp) { 
     min-width: 150px;
-    height: 80px;
+    height: 60px;
     margin-left: 0px;
-    padding: 20px 25px 20px 25px;
+    padding: 20px 25px 0px 25px;
     img {
       height: 35px;
     } 
