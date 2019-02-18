@@ -33,23 +33,17 @@
       <img :src="map.map_image.url">
     </div>
 
-    <div class="map-subtitle drop-shadow " v-if="map">
-      <img src="@/assets/maps/juried-trials-marker.gif">
-      <div>
-        <p class="b">140 JURY TRIALS</p>
-        <p>» 125 trials in Ohio</p>
-        <p>» 15 others across the U.S.</p>
-      </div>
-      <img src="@/assets/maps/appellate-marker.gif">
-      <div>
-        <p class="b">20 APPELLATE COURT APPEARANCES</p>
-        <p>» 18 appearances in Ohio</p>
-        <p>» 1 in Texas</p>
-        <p>» 1 in Georgia</p>
+    <div class="map-subtitle drop-shadow " v-if="map && mapContent.items && mapContent.items[0].icon_title[0]">
+      <div v-for="mapItem in mapContent.items" v-if="mapItem.icon_title[0]">
+        <img :src="mapItem.map_icon.url">
+        <div>
+          <p class="b">{{mapItem.icon_title[0].text}}</p>
+          <prismic-rich-text :field="mapItem.icon_description1"></prismic-rich-text>
+        </div>
       </div>
     </div>
 
-    <div class="contact-marker raised-container" v-else-if="rightData">
+    <div class="contact-marker raised-container" v-if="!map && rightData">
       <p class="b">{{rightData.primary.contact_us_card_title[0].text}}</p>
       <p class="additional-contact" style="opacity:.7;">
         <prismic-rich-text :field="rightData.primary.contact_us_card_text"></prismic-rich-text>
@@ -57,7 +51,7 @@
       <br>
     </div>
 
-    <div class="contact-marker raised-container" v-else-if="contactInfo">
+    <div class="contact-marker raised-container" v-else-if="!map && contactInfo">
       <p class="b">Contact Us</p>
       <p class="address-line">{{contactInfo.address_line_1[0].text}}</p>
       <p class="address-line">{{contactInfo.address_line_2[0].text}}</p>
